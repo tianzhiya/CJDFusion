@@ -2,8 +2,11 @@
 Code of VDifFusion: A Visual Language-Driven Diffusion-Based Approach for Infrared and Visible Image Fusion
 
 ## Tips:<br>
-Due to file size issues, the training set has been removed from the code and the MSRS dataset can be downloaded here: https://github.com/Linfeng-Tang/MSRS
+1.Due to file size issues, the training set has been removed from the code and the MSRS dataset can be downloaded here: https://github.com/Linfeng-Tang/MSRS
 Place the downloaded training dataset under: ./data/MSRS/Visible/ path and ./data/MSRS/Infrared/ path.
+2.Please unzip the pretrain models of CLIP “pretrain_models.rar” and put it into the folder in the current directory. The download address is https://drive.google.com/file/d/130fCUOwhU49dBfA9zFmX7M21WWI92Anz/view?usp=sharing.
+
+
 
 ## To Train
 Run "** python train_clip.py**" to train your model.
