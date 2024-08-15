@@ -3,7 +3,7 @@ Code of VDifFusion: A Visual Language-Driven Diffusion-Based Approach for Infrar
 
 ## Tips:<br>
 Due to file size issues, the training set has been removed from the code and the MSRS dataset can be downloaded here: https://github.com/Linfeng-Tang/MSRS
-Place the downloaded training dataset under: ./data/MSRS/Visible/ path and ./data/MSRS/Infrared/ path.
+Place the downloaded training dataset under: ./data/MSRS/Visible/train path and ./data/MSRS/Infrared/train path.
 
 ## To Train
 Run "** python train_clip.py**" to train your model.
