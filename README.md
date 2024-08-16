@@ -5,7 +5,8 @@ Code of VDifFusion: A Visual Language-Driven Diffusion-Based Approach for Infrar
 1.Due to file size issues, the training set has been removed from the code and the MSRS dataset can be downloaded here: https://github.com/Linfeng-Tang/MSRS
 Place the downloaded training dataset under: ./data/MSRS/Visible/train path and ./data/MSRS/Infrared/train path.
 
-2.The unzipped pre-trained model of CLIP should be placed in the current directory. You can download the pre-training model for CLIP from the following link: https://drive.google.com/file/d/130fCUOwhU49dBfA9zFmX7M21WWI92Anz/view?usp=sharing.
+2.The unzipped pre-trained model of CLIP should be placed in the current directory. You can download the pre-training model for CLIP from the following link: https://drive.google.com/file/d/130fCUOwhU49dBfA9zFmX7M21WWI92Anz/view?usp=sharing. Baidu.com can be downloaded here: link: https://pan.baidu.com/s/1kl3efgsyX9qZ1CnQfW8gjA?pwd=sz2p 
+Extract code: sz2p.
 
 ## To Train
 Run "** python train_clip.py**" to train your model.
