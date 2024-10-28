@@ -22,4 +22,4 @@ If this work is helpful to you, please cite it as:
   title={VDifFusion: A Visual Language-Driven Diffusion-Based Approach for Infrared and Visible Image Fusion},
 }
 ```
-If you have any question, please email to me (1211211001@stu.xaut.edu.cn).
+If you have any question, please email to me .
