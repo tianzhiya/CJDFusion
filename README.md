@@ -20,7 +20,6 @@ If this work is helpful to you, please cite it as:
 ```
 @article{VDifFusion,
   title={VDifFusion: A Visual Language-Driven Diffusion-Based Approach for Infrared and Visible Image Fusion},
-  author={Quanquan Xiao ,Haiyan jin,Haonan Su,etc},
 }
 ```
 If you have any question, please email to me (1211211001@stu.xaut.edu.cn).
