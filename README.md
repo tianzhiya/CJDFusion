@@ -1,4 +1,4 @@
-# VDifFusion
+# CJDFusion
 Code of VDifFusion: A Cross-Modal Joint Diffusion Model for Infrared and Visible Image Fusion
 
 ## Tips:<br>
