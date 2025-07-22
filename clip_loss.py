@@ -98,15 +98,26 @@ def get_clip_score_from_feature(tensor, text_features):
     return score
 
 
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
 class L_clip_from_feature(nn.Module):
-    def __init__(self):
+    def __init__(self, neg_weight=0.5):
         super(L_clip_from_feature, self).__init__()
+        self.neg_weight = neg_weight
         for param in self.parameters():
             param.requires_grad = False
 
-    def forward(self, x, text_features):
-        k1 = get_clip_score_from_feature(x, text_features)
-        return k1
+    def forward(self, x, text_feature_pos, text_feature_neg):
+        sim_pos = get_clip_score_from_feature(x, text_feature_pos)  # 图像与正向文本相似度
+        sim_neg = get_clip_score_from_feature(x, text_feature_neg)  # 图像与负向文本相似度
+
+        loss = -(sim_pos - self.neg_weight * sim_neg)
+
+        return loss
+
+
 
 
 res_model, res_preprocess = load("RN101", device=device)

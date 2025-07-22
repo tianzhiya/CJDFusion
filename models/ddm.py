@@ -474,31 +474,34 @@ class DenoisingDiffusion(object):
                     image_folder, str(step), f"{y[0]}.png"))
 
     def clip_loss(self, args, x, output, visImageYCrCb):
-
         pred_x = output["pred_x"]
-
-        imge_fuionImageRGB = self.getFusionImageRGB(pred_x, visImageYCrCb)
+        fusion_rgb = self.getFusionImageRGB(pred_x, visImageYCrCb)
 
         prompt = Prompts(args.prompt_pretrain_dir).cuda()
         prompt = torch.nn.DataParallel(prompt)
 
         text_encoder = TextEncoder(c_model)
 
-        L_clip = clip_loss.L_clip_from_feature()
+        # 初始化 L_clip 损失
+        L_clip = clip_loss.L_clip_from_feature(neg_weight=0.5)
 
-        self.prompt = ['a vivid image with clear background and obvious objects']
+        # 正向文本列表
+        prompt_pos = ['a vivid image with clear background and obvious objects']
+        # 负向文本列表（示例）
+        prompt_neg = ['a blurry image with messy background and unclear objects']
 
         embedding_prompt = prompt.module.embedding_prompt
         embedding_prompt.requires_grad = False
 
-        tokenized_prompts = clip.tokenize(self.prompt).cuda()
+        token_pos = clip.tokenize(prompt_pos).cuda()
+        token_neg = clip.tokenize(prompt_neg).cuda()
 
-        text_features = text_encoder(embedding_prompt, tokenized_prompts)
+        text_feat_pos = text_encoder(embedding_prompt, token_pos)
+        text_feat_neg = text_encoder(embedding_prompt, token_neg)
 
-        cliploss = L_clip(imge_fuionImageRGB, text_features)
+        cliploss = L_clip(fusion_rgb, text_feat_pos, text_feat_neg)
 
-        c_loss = cliploss
-        return c_loss
+        return cliploss
 
     def getFusionImageRGB(self, pred_x, visImageYCrCb):
         fusion_ycrcb = torch.cat(
